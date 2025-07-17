@@ -1,5 +1,7 @@
 package com.example.kafka_consumer.notification.domain;
 
+import com.example.kafka_consumer.Events.EventChangeMessage;
+import com.example.kafka_consumer.Events.EventType;
 import com.example.kafka_consumer.notification.NotificationType;
 import com.example.kafka_consumer.notification.entity.NotificationEntity;
 import com.example.kafka_consumer.notification.entity.NotificationEntityMapper;
@@ -29,6 +31,7 @@ public class NotificationService {
     public void createNotification(
           Long eventId,
           List<Long> usersId,
+          EventChangeMessage event,
           NotificationType notificationType
     ) {
 
@@ -39,8 +42,21 @@ public class NotificationService {
                         eventId,
                         userId,
                         ZonedDateTime.now(),
-                        false,
-                        notificationType.name()
+                       false,
+                        event.name().getOldField(),
+                        event.name().getNewField(),
+                        event.maxPlaces().getOldField(),
+                        event.maxPlaces().getNewField(),
+                        event.date().getOldField().toLocalDateTime(),
+                        event.date().getNewField().toLocalDateTime(),
+                        event.cost().getOldField(),
+                        event.cost().getNewField(),
+                        event.duration().getOldField(),
+                        event.duration().getNewField(),
+                        event.locationId().getOldField(),
+                        event.locationId().getNewField(),
+                        event.status().getOldField().name(),
+                        event.status().getNewField().name()
                 ))
                 .toList();
 

@@ -33,6 +33,7 @@ public class EventProcessor {
         notificationService.createNotification(
                 event.eventId(),
                 event.users(),
+                event,
                 NotificationType.UPDATED
         );
 

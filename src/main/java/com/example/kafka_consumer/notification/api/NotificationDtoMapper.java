@@ -12,8 +12,7 @@ public class NotificationDtoMapper {
                 notification.eventId(),
                 notification.userId(),
                 notification.createdAt(),
-                notification.isRead(),
-                notification.type()
+                notification.isRead()
         );
     }
 
@@ -23,8 +22,7 @@ public class NotificationDtoMapper {
                   notification.eventId(),
                   notification.userId(),
                   notification.createdAt(),
-                  notification.isRead(),
-                  notification.type()
+                  notification.isRead()
           );
     }
 }

@@ -8,14 +8,7 @@ import org.springframework.stereotype.Component;
 public class NotificationEntityMapper {
 
     public NotificationEntity toEntity(Notification notification) {
-        return new NotificationEntity(
-                notification.id(),
-                notification.eventId(),
-                notification.userId(),
-                notification.createdAt(),
-                notification.isRead(),
-                notification.type().name()
-        );
+        return null;
     }
 
     public Notification toDomain(NotificationEntity notificationEntity) {
@@ -24,8 +17,7 @@ public class NotificationEntityMapper {
                 notificationEntity.getEventId(),
                 notificationEntity.getUserId(),
                 notificationEntity.getCreatedAt(),
-                notificationEntity.isRead(),
-                NotificationType.valueOf(notificationEntity.getType())
+                notificationEntity.isRead()
         );
     }
 }

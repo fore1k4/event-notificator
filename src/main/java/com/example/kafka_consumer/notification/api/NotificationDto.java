@@ -13,8 +13,8 @@ public record NotificationDto(
 
         ZonedDateTime createdAt,
 
-        boolean isRead,
+        boolean isRead
 
-        NotificationType type
+
 ) {
 }
