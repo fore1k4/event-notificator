@@ -40,7 +40,7 @@ public class SecurityConfiguration {
                                         "/v2/api-docs",
                                         "/configuration/ui",
                                         "/configuration/security",
-                                        "/event-manager-openapi.yaml"
+                                        "/event-notificator-openapi.yaml"
                                 ).permitAll()
 
                                 .requestMatchers("notifications/**").authenticated()
