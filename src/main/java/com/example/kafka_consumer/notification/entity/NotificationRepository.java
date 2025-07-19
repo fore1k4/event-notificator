@@ -23,7 +23,7 @@ public interface NotificationRepository extends JpaRepository<NotificationEntity
        AND n.isRead = false 
        AND n.id IN :notificationIds
 """)
-    int markNotificationAsRead(
+    void markNotificationAsRead(
             @Param("userId") Long userId,
             @Param("notificationIds") List<Long> notificationsId
     );

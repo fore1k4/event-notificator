@@ -1,9 +1,9 @@
-package com.example.kafka_consumer.Events;
+package com.example.kafka_consumer.events;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 
-public record EventChangeMessage (
+public record EventChangeMessage(
         Long eventId,
 
         Long changerId,

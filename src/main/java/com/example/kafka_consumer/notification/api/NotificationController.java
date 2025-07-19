@@ -42,7 +42,7 @@ public class NotificationController {
 
     @PostMapping
     public ResponseEntity<Void> makeNotificationsIsRead(
-       @RequestBody NotificationIdsDto notificationIdsDto
+            @RequestBody NotificationIdsDto notificationIdsDto
     ) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 

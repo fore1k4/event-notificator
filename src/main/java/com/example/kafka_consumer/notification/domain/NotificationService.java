@@ -1,7 +1,6 @@
 package com.example.kafka_consumer.notification.domain;
 
-import com.example.kafka_consumer.Events.EventChangeMessage;
-import com.example.kafka_consumer.Events.EventType;
+import com.example.kafka_consumer.events.EventChangeMessage;
 import com.example.kafka_consumer.notification.NotificationType;
 import com.example.kafka_consumer.notification.entity.NotificationEntity;
 import com.example.kafka_consumer.notification.entity.NotificationEntityMapper;
@@ -29,10 +28,10 @@ public class NotificationService {
     }
 
     public void createNotification(
-          Long eventId,
-          List<Long> usersId,
-          EventChangeMessage event,
-          NotificationType notificationType
+            Long eventId,
+            List<Long> usersId,
+            EventChangeMessage event,
+            NotificationType notificationType
     ) {
 
 
@@ -42,7 +41,7 @@ public class NotificationService {
                         eventId,
                         userId,
                         ZonedDateTime.now(),
-                       false,
+                        false,
                         event.name().getOldField(),
                         event.name().getNewField(),
                         event.maxPlaces().getOldField(),
@@ -75,9 +74,8 @@ public class NotificationService {
 
     @Transactional
     public void makeNotificationsIsRead(Long userId, List<Long> notificationIds) {
-            notificationRepository.markNotificationAsRead(userId, notificationIds);
+        notificationRepository.markNotificationAsRead(userId, notificationIds);
     }
-
 
 
 }

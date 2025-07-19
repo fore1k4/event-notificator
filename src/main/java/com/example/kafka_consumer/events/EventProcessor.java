@@ -1,4 +1,4 @@
-package com.example.kafka_consumer.Events;
+package com.example.kafka_consumer.events;
 
 import com.example.kafka_consumer.notification.NotificationType;
 import com.example.kafka_consumer.notification.domain.NotificationService;

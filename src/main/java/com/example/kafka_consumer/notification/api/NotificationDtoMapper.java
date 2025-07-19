@@ -15,14 +15,4 @@ public class NotificationDtoMapper {
                 notification.isRead()
         );
     }
-
-    public Notification toDomain(NotificationDto notification) {
-          return new Notification(
-                  notification.id(),
-                  notification.eventId(),
-                  notification.userId(),
-                  notification.createdAt(),
-                  notification.isRead()
-          );
-    }
 }

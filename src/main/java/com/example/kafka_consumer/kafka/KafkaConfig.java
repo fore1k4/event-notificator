@@ -1,6 +1,6 @@
 package com.example.kafka_consumer.kafka;
 
-import com.example.kafka_consumer.Events.EventChangeMessage;
+import com.example.kafka_consumer.events.EventChangeMessage;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.springframework.context.annotation.Bean;

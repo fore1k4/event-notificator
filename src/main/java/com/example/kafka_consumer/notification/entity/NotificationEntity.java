@@ -24,10 +24,6 @@ public class NotificationEntity {
 
     @Column(name = "is_read")
     private boolean isRead;
-
-//    @Column(name = "type")
-//    private String type;
-
     private String oldName;
     private String newName;
     private Long oldMaxPlaces;
