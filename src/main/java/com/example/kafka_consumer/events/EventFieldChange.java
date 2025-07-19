@@ -1,4 +1,4 @@
-package com.example.kafka_consumer.Events;
+package com.example.kafka_consumer.events;
 
 public class EventFieldChange<T> {
 

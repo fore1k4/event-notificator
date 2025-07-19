@@ -1,10 +1,11 @@
 package com.example.kafka_consumer.notification.domain;
 
-import com.example.kafka_consumer.notification.NotificationTransactionalService;
+import com.example.kafka_consumer.events.EventChangeMessage;
 import com.example.kafka_consumer.notification.NotificationType;
 import com.example.kafka_consumer.notification.entity.NotificationEntity;
 import com.example.kafka_consumer.notification.entity.NotificationEntityMapper;
 import com.example.kafka_consumer.notification.entity.NotificationRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
@@ -17,21 +18,20 @@ public class NotificationService {
 
     private final NotificationEntityMapper notificationEntityMapper;
 
-    private final NotificationTransactionalService notificationTransactionalService;
 
     public NotificationService(
             NotificationRepository notificationRepository,
-            NotificationEntityMapper notificationEntityMapper, NotificationTransactionalService notificationTransactionalService
+            NotificationEntityMapper notificationEntityMapper
     ) {
         this.notificationRepository = notificationRepository;
         this.notificationEntityMapper = notificationEntityMapper;
-        this.notificationTransactionalService = notificationTransactionalService;
     }
 
     public void createNotification(
-          Long eventId,
-          List<Long> usersId,
-          NotificationType notificationType
+            Long eventId,
+            List<Long> usersId,
+            EventChangeMessage event,
+            NotificationType notificationType
     ) {
 
 
@@ -42,7 +42,20 @@ public class NotificationService {
                         userId,
                         ZonedDateTime.now(),
                         false,
-                        notificationType.name()
+                        event.name().getOldField(),
+                        event.name().getNewField(),
+                        event.maxPlaces().getOldField(),
+                        event.maxPlaces().getNewField(),
+                        event.date().getOldField().toLocalDateTime(),
+                        event.date().getNewField().toLocalDateTime(),
+                        event.cost().getOldField(),
+                        event.cost().getNewField(),
+                        event.duration().getOldField(),
+                        event.duration().getNewField(),
+                        event.locationId().getOldField(),
+                        event.locationId().getNewField(),
+                        event.status().getOldField().name(),
+                        event.status().getNewField().name()
                 ))
                 .toList();
 
@@ -53,13 +66,16 @@ public class NotificationService {
     public List<Notification> getNotificationsByUserId(Long userId) {
         var entities = notificationRepository.findByUserId(userId);
 
-        notificationTransactionalService.markAllAsReadByUserId(userId);
 
         return entities.stream()
                 .map(notificationEntityMapper::toDomain)
                 .toList();
     }
 
+    @Transactional
+    public void makeNotificationsIsRead(Long userId, List<Long> notificationIds) {
+        notificationRepository.markNotificationAsRead(userId, notificationIds);
+    }
 
 
 }

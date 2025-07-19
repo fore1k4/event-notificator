@@ -1,7 +1,5 @@
 package com.example.kafka_consumer.notification.domain;
 
-import com.example.kafka_consumer.notification.NotificationType;
-
 import java.time.ZonedDateTime;
 
 public record Notification(
@@ -13,9 +11,7 @@ public record Notification(
 
         ZonedDateTime createdAt,
 
-        boolean isRead,
-
-        NotificationType type
+        boolean isRead
 ) {
 
 }

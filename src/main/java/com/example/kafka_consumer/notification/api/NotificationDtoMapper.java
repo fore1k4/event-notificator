@@ -12,19 +12,7 @@ public class NotificationDtoMapper {
                 notification.eventId(),
                 notification.userId(),
                 notification.createdAt(),
-                notification.isRead(),
-                notification.type()
+                notification.isRead()
         );
-    }
-
-    public Notification toDomain(NotificationDto notification) {
-          return new Notification(
-                  notification.id(),
-                  notification.eventId(),
-                  notification.userId(),
-                  notification.createdAt(),
-                  notification.isRead(),
-                  notification.type()
-          );
     }
 }
