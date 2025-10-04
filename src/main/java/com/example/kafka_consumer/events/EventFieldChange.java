@@ -1,0 +1,31 @@
+package com.example.kafka_consumer.events;
+
+public class EventFieldChange<T> {
+
+    private T oldField;
+    private T newField;
+
+    public T getOldField() {
+        return oldField;
+    }
+
+    public void setOldField(T oldField) {
+        this.oldField = oldField;
+    }
+
+    public T getNewField() {
+        return newField;
+    }
+
+    public void setNewField(T newField) {
+        this.newField = newField;
+    }
+
+    @Override
+    public String toString() {
+        return "EventFieldChange{" +
+                "oldField=" + oldField +
+                ", newField=" + newField +
+                '}';
+    }
+}
